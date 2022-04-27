@@ -3,18 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-three/cannon": "^4.3.0",
-    "@react-three/drei": "^8.3.1",
-    "@react-three/fiber": "^7.0.21",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "jotai": "^1.4.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "three": "^0.135.0",
-    "web-vitals": "^1.0.1"
+    "@react-three/cannon": "^6.3.0",
+    "@react-three/drei": "^9.5.3",
+    "@react-three/fiber": "^8.0.12",
+    "@react-three/postprocessing": "^2.3.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/user-event": "^14.1.1",
+    "jotai": "^1.6.4",
+    "leva": "^0.9.23",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "^5.0.1",
+    "three": "^0.139.2",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "yarn-upgrade-all": "^0.7.1"
   }
 }
