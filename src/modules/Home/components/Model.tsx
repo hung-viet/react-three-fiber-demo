@@ -1,15 +1,20 @@
 import React, { useRef } from "react";
-import { useLoader, useFrame } from "@react-three/fiber";
+import { useLoader, useFrame, PrimitiveProps } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // import { useControls } from "leva";
 
 const Model = () => {
   // This reference will give us direct access to the mesh
-  const mesh = useRef();
-  const gltf = useLoader(GLTFLoader, "/assets/models/military_mech/scene.gltf");
+  const mesh = useRef<PrimitiveProps>();
+  const gltf: any = useLoader(
+    GLTFLoader,
+    "/assets/models/military_mech/scene.gltf"
+  );
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame(() => (mesh.current.rotation.y += 0.01));
+  useFrame(() => {
+    mesh.current && (mesh.current.rotation.y += 0.01);
+  });
 
   // const { scale, positionX, positionY, positionZ } = useControls({
   //   scale: { value: 1, min: 0, max: 50, step: 0.1 },

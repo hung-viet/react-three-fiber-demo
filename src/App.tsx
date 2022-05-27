@@ -1,9 +1,9 @@
 import React from "react";
-import Home from "./modules/Home";
+import EffectHome from "./modules/EffectHome";
 import "./App.css";
 
 function App() {
-  return <Home />;
+  return <EffectHome />;
 }
 
 export default App;
