@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLoader, useFrame, PrimitiveProps } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // import { useControls } from "leva";
 
+let mouseX = 0;
 const Model = () => {
   // This reference will give us direct access to the mesh
   const mesh = useRef<PrimitiveProps>();
@@ -11,9 +12,22 @@ const Model = () => {
     "/assets/models/military_mech/scene.gltf"
   );
 
+  useEffect(() => {
+    document.addEventListener("mousemove", onMouseMove);
+    return () => {
+      document.removeEventListener("mousemove", onMouseMove);
+    };
+  }, []);
+
+  const onMouseMove = (event: MouseEvent) => {
+    mouseX = event.clientX - window.innerWidth / 2;
+    console.log(event.clientX - window.innerWidth / 2);
+  };
+
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame(() => {
-    mesh.current && (mesh.current.rotation.y += 0.01);
+    if (!mesh.current) return;
+    mesh.current.rotation.y += mouseX > 0 ? 0.05 : -0.05;
   });
 
   // const { scale, positionX, positionY, positionZ } = useControls({
