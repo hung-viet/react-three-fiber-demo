@@ -1,12 +1,15 @@
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useEffect, useRef } from "react";
+import { Canvas, PrimitiveProps } from "@react-three/fiber";
 import { OrbitControls, Loader } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 import Model from "./components/Model";
 import Instruction from "./components/Instruction";
+import Rig from "./components/Rig";
+import LeftRightSwipe from "./components/LeftRightSwipe";
 
 function Home() {
+  const model = useRef<PrimitiveProps>(null);
   return (
     <div
       style={{
@@ -18,10 +21,12 @@ function Home() {
       <Canvas>
         <Suspense fallback={null}>
           <ambientLight />
-          <Model />
+          <Model ref={model} />
           <EffectComposer>
             <Bloom />
           </EffectComposer>
+          <LeftRightSwipe model={model} />
+          {/* <Rig /> */}
           {/* <OrbitControls /> */}
         </Suspense>
       </Canvas>
